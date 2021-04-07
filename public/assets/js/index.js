@@ -32,7 +32,7 @@ app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, 'notes.html'))
 
 app.get('/api/notes', (req, res) => res.json(getNotes));
 
-app.post('/notes', (req, res) => {
+app.post('/api/notes', (req, res) => {
   console.log(req.body)
   const newNote = req.body;
 
