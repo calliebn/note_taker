@@ -40,6 +40,12 @@ const saveNote = (note) =>
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(note),
+  }).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }else {
+      alert(`Error: ${response.statusText}`);
+    }
   });
 
 const deleteNote = (id) =>
@@ -54,11 +60,11 @@ const renderActiveNote = () => {
   hide(saveNoteBtn);
 
   if (activeNote.id) {
-    noteTitle.setAttribute('readonly', true);
-    noteText.setAttribute('readonly', true);
+    noteTitle.setAttribute('data-id', activeNote.id);
     noteTitle.value = activeNote.title;
     noteText.value = activeNote.text;
   } else {
+    noteTitle.removeAttribute('data-id');
     noteTitle.value = '';
     noteText.value = '';
   }
