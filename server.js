@@ -25,6 +25,7 @@ app.get('/api/notes', (req, res) => {
   })
 });
 
+// Route for new notes with unique ids 
 app.post('/api/notes', (req, res) => {
   console.log(req.body)
   console.log(uuidv4())
@@ -43,6 +44,7 @@ app.post('/api/notes', (req, res) => {
   })
 })
 
+// Remove notes from database by their unique id
 app.delete('/api/notes/:id', (req,res) => {
   fs.readFile ("./db/db.json", "utf8", (err, response) => {
     if (err) throw err;
